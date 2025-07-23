@@ -37,8 +37,8 @@ export function Services() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-3">
-            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-primary font-medium">{t.navServices}</div>
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-primary">{t.servicesTitle}</h2>
+            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground font-medium">{t.navServices}</div>
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground">{t.servicesTitle}</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               {t.servicesSubtitle}
             </p>
@@ -46,12 +46,12 @@ export function Services() {
         </div>
         <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col text-left p-6 transition-all duration-300 shadow-md hover:shadow-xl hover:border-primary/50">
+            <Card key={index} className="flex flex-col text-left p-6 transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card">
               <CardHeader className="p-0 mb-4">
                 {service.icon}
               </CardHeader>
               <CardContent className="p-0 flex flex-col">
-                <CardTitle className="mb-2 text-xl font-semibold">{service.title}</CardTitle>
+                <CardTitle className="mb-2 text-xl font-semibold text-card-foreground">{service.title}</CardTitle>
                 <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
               </CardContent>
             </Card>

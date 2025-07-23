@@ -12,15 +12,15 @@ export function Pricing() {
   return (
     <section id="pricing" className="bg-background">
       <div className="container px-4 md:px-6">
-        <Card className="text-center shadow-lg">
+        <Card className="text-center shadow-lg bg-card border-none">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-primary">{t.pricingTitle}</CardTitle>
+            <CardTitle className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground">{t.pricingTitle}</CardTitle>
             <CardDescription className="max-w-[900px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               {t.pricingSubtitle}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="mb-6">{t.pricingDesc}</p>
+            <p className="mb-6 text-muted-foreground">{t.pricingDesc}</p>
             <Button variant="outline" asChild>
                 <Link href="#contact">Get a Quote</Link>
             </Button>

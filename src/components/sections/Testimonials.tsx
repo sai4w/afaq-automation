@@ -58,7 +58,7 @@ export function Testimonials() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-primary">{t.testimonialsTitle}</h2>
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-secondary-foreground">{t.testimonialsTitle}</h2>
           </div>
         </div>
         <Carousel setApi={setApi} className="w-full max-w-4xl mx-auto" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -66,7 +66,7 @@ export function Testimonials() {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card className="shadow-lg">
+                  <Card className="shadow-lg bg-background">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center space-y-4">
                       <div className="flex gap-1 text-yellow-400">
                         <Star className="w-5 h-5 fill-current" />
@@ -77,7 +77,7 @@ export function Testimonials() {
                       </div>
                       <p className="text-lg italic text-muted-foreground">"{testimonial.quote}"</p>
                       <div className="mt-2">
-                        <p className="font-semibold text-primary">{testimonial.name}</p>
+                        <p className="font-semibold text-foreground">{testimonial.name}</p>
                         <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                       </div>
                     </CardContent>

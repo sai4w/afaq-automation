@@ -12,7 +12,7 @@ export function Footer() {
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-           <div className="flex items-center gap-2 font-bold text-lg">
+           <div className="flex items-center gap-2 font-bold text-lg text-foreground">
              <BotMessageSquare className="h-7 w-7 text-primary" />
              <span className="font-headline">آفاق للأتمتة</span>
            </div>
