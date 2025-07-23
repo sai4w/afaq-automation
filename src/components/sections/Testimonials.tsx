@@ -42,18 +42,24 @@ export function Testimonials() {
       name: t.testimonial1Name,
       company: t.testimonial1Company,
       avatar: 'https://placehold.co/100x100.png',
+      logo: 'https://placehold.co/100x40.png',
+      logoHint: 'company logo',
     },
     {
       quote: t.testimonial2,
       name: t.testimonial2Name,
       company: t.testimonial2Company,
       avatar: 'https://placehold.co/100x100.png',
+      logo: 'https://placehold.co/100x40.png',
+      logoHint: 'company logo',
     },
     {
       quote: t.testimonial3,
       name: t.testimonial3Name,
       company: t.testimonial3Company,
       avatar: 'https://placehold.co/100x100.png',
+      logo: 'https://placehold.co/100x40.png',
+      logoHint: 'company logo',
     },
   ];
 
@@ -71,13 +77,16 @@ export function Testimonials() {
               <CarouselItem key={index}>
                 <div className="p-1">
                   <Card className="shadow-sm bg-card border">
-                    <CardContent className="p-8 space-y-4">
+                    <CardHeader className="flex flex-row items-center justify-between p-6">
                       <div className="flex gap-1 text-yellow-400">
                         {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
                       </div>
+                      <Image src={testimonial.logo} alt={`${testimonial.company} logo`} width={100} height={40} className="object-contain" data-ai-hint={testimonial.logoHint} />
+                    </CardHeader>
+                    <CardContent className="p-6 pt-0 space-y-4">
                       <p className="text-lg italic text-muted-foreground leading-relaxed">"{testimonial.quote}"</p>
                     </CardContent>
-                    <CardFooter className="flex items-center gap-4 pt-4 border-t">
+                    <CardFooter className="flex items-center gap-4 pt-4 border-t p-6">
                       <Image src={testimonial.avatar} alt={testimonial.name} width={48} height={48} className="rounded-full" data-ai-hint="person face" />
                       <div>
                         <p className="font-semibold text-foreground">{testimonial.name}</p>

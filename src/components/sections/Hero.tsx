@@ -6,55 +6,91 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import Image from 'next/image';
-import { useOnScreen } from '@/hooks/use-on-screen';
-import React from 'react';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { Metrics } from './Metrics';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
 
 export function Hero() {
   const { language } = useLanguage();
   const t = translations[language];
-  const ref = React.useRef<HTMLDivElement>(null);
-  const isVisible = useOnScreen(ref);
 
   return (
-    <section id="home" ref={ref} className="w-full min-h-[calc(100vh-112px)] flex items-center justify-center bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/50 to-background z-10"></div>
+    <section id="home" className="w-full min-h-[100vh] flex flex-col justify-center bg-background relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
         <Image 
             src="https://placehold.co/1920x1080.png"
             alt="Hero Background"
-            data-ai-hint="futuristic technology abstract"
+            data-ai-hint="glowing neural networks"
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
         />
-        <div className="container px-4 md:px-6 z-20">
-            <div className={cn(
-                "flex flex-col items-center text-center space-y-6 transition-all duration-700 ease-out",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
+      <div className="container px-4 md:px-6 z-10">
+        <motion.div
+            className="flex flex-col items-center text-center space-y-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <motion.h1 
+              className="font-headline text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white"
+              variants={itemVariants}
             >
-                <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground">
-                    {t.heroTitle}
-                </h1>
-                <p className="max-w-3xl text-lg md:text-xl text-foreground/80 leading-relaxed">
-                    {t.heroSubtitle}
-                </p>
-                <div className="flex flex-col gap-4 min-[400px]:flex-row justify-center">
-                    <Button asChild size="lg" className="rounded-full px-8 text-lg">
-                        <Link href="#services">
-                            {t.heroCta}
-                            <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
-                        </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-foreground/20 hover:bg-foreground/5 text-lg">
-                        <Link href="#">
-                            <PlayCircle className="me-2 h-5 w-5" />
-                            Watch Demo
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-        </div>
+                {t.heroTitle}
+            </motion.h1>
+            <motion.p 
+              className="max-w-3xl text-lg md:text-xl text-white/80 leading-relaxed"
+              variants={itemVariants}
+            >
+                {t.heroSubtitle}
+            </motion.p>
+            <motion.div 
+              className="flex flex-col gap-4 min-[400px]:flex-row justify-center"
+              variants={itemVariants}
+            >
+                <Button asChild size="lg" className="bg-logo-red text-white hover:bg-red-700 rounded-full px-8 text-lg">
+                    <Link href="#services">
+                        {t.heroCta}
+                        <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
+                    </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-accent bg-accent text-accent-foreground hover:bg-accent/90 text-lg">
+                    <Link href="#">
+                        <PlayCircle className="me-2 h-5 w-5" />
+                        Watch Demo
+                    </Link>
+                </Button>
+            </motion.div>
+        </motion.div>
+      </div>
+      <div className="w-full z-10 pt-16">
+        <Metrics />
+      </div>
     </section>
   );
 }

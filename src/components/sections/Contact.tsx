@@ -30,36 +30,36 @@ export function Contact() {
             </CardHeader>
             <CardContent>
               <form className="space-y-4">
-                <Input type="text" placeholder={t.contactFormName} className="bg-background" />
-                <Input type="email" placeholder={t.contactFormEmail} className="bg-background" />
-                <Textarea placeholder={t.contactFormMessage} className="bg-background" />
-                <Button type="submit" className="w-full rounded-full">{t.sendMessage}</Button>
+                <Input type="text" placeholder={t.contactFormName} className="bg-background focus:ring-accent focus:border-accent" />
+                <Input type="email" placeholder={t.contactFormEmail} className="bg-background focus:ring-accent focus:border-accent" />
+                <Textarea placeholder={t.contactFormMessage} className="bg-background focus:ring-accent focus:border-accent" />
+                <Button type="submit" className="w-full rounded-full bg-accent text-accent-foreground hover:bg-accent/90">{t.sendMessage}</Button>
               </form>
             </CardContent>
           </Card>
           <div className="flex flex-col justify-center space-y-6 pt-8 md:pt-0">
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <Phone className="w-8 h-8 text-primary-foreground" />
+              <Phone className="w-8 h-8 text-accent" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactPhone}</h3>
-                <a href="tel:+966123456789" className="text-muted-foreground hover:text-primary-foreground" dir="ltr">+966 12 345 6789</a>
+                <a href="tel:+966123456789" className="text-muted-foreground hover:text-accent" dir="ltr">+966 12 345 6789</a>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <Mail className="w-8 h-8 text-primary-foreground" />
+              <Mail className="w-8 h-8 text-accent" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactEmail}</h3>
-                <a href="mailto:info@afaq.sa" className="text-muted-foreground hover:text-primary-foreground">info@afaq.sa</a>
+                <a href="mailto:info@afaq.sa" className="text-muted-foreground hover:text-accent">info@afaq.sa</a>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <MessageCircle className="w-8 h-8 text-primary-foreground" />
+              <MessageCircle className="w-8 h-8 text-accent" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactWhatsApp}</h3>
-                <a href="https://wa.me/966123456789" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary-foreground" dir="ltr">+966 12 345 6789</a>
+                <a href="https://wa.me/966123456789" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent" dir="ltr">+966 12 345 6789</a>
               </div>
             </div>
-             <Button asChild size="lg" className="rounded-full">
+             <Button asChild size="lg" className="rounded-full bg-logo-red text-white hover:bg-red-700">
                <Link href="#">{t.navBookCall}</Link>
              </Button>
           </div>

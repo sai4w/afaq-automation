@@ -3,46 +3,58 @@ import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { BarChart, Users, Smile, Clock } from 'lucide-react';
-import React from 'react';
-import { useOnScreen } from '@/hooks/use-on-screen';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
 export function Metrics() {
   const { language } = useLanguage();
   const t = translations[language];
-  const ref = React.useRef<HTMLDivElement>(null);
-  const isVisible = useOnScreen(ref, '-100px');
-
 
   const metrics = [
-    { icon: <Smile className="w-10 h-10 text-primary-foreground" />, value: 95, label: t.metric1Label, suffix: '%' },
-    { icon: <BarChart className="w-10 h-10 text-primary-foreground" />, value: 150, label: t.metric2Label, suffix: '+' },
-    { icon: <Users className="w-10 h-10 text-primary-foreground" />, value: 40, label: t.metric3Label, suffix: '%' },
-    { icon: <Clock className="w-10 h-10 text-primary-foreground" />, value: 24, label: t.metric4Label, suffix: '/7' },
+    { value: 98, label: t.metric1Label, suffix: '%' },
+    { value: 150, label: t.metric2Label, suffix: '+' },
+    { value: 30, label: t.metric3Label, suffix: '%' },
   ];
 
   return (
-    <section id="metrics" ref={ref} className="bg-secondary/30">
+    <section id="metrics" className="bg-transparent">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+        <motion.div
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
           {metrics.map((metric, index) => (
-            <div
+            <motion.div
               key={index}
-              className={cn(
-                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-primary rounded-lg shadow-sm border transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              )}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              variants={itemVariants}
+              className="flex flex-col items-center justify-center text-center space-y-2 p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20"
             >
-              {metric.icon}
-              <div className="text-5xl font-bold text-primary-foreground">
+              <div className="text-5xl font-bold text-white">
                 <AnimatedCounter from={0} to={metric.value} />
                 <span className="text-4xl">{metric.suffix}</span>
               </div>
-              <p className="text-lg font-medium text-muted-foreground">{metric.label}</p>
-            </div>
+              <p className="text-lg font-medium text-white/80">{metric.label}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
