@@ -4,10 +4,15 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { BarChart, Users, Smile, Clock } from 'lucide-react';
 import React from 'react';
+import { useOnScreen } from '@/hooks/use-on-screen';
+import { cn } from '@/lib/utils';
 
 export function Metrics() {
   const { language } = useLanguage();
   const t = translations[language];
+  const ref = React.useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(ref, '-100px');
+
 
   const metrics = [
     { icon: <Smile className="w-10 h-10 text-primary" />, value: 95, label: t.metric1Label, suffix: '%' },
@@ -17,11 +22,18 @@ export function Metrics() {
   ];
 
   return (
-    <section id="metrics" className="bg-secondary">
+    <section id="metrics" ref={ref} className="bg-secondary">
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           {metrics.map((metric, index) => (
-            <div key={index} className="flex flex-col items-center justify-center text-center space-y-3 p-6 bg-background rounded-lg shadow-md transition-transform hover:scale-105">
+            <div
+              key={index}
+              className={cn(
+                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-background rounded-lg shadow-md transition-all duration-700 ease-out hover:scale-105",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              )}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
               {metric.icon}
               <div className="text-5xl font-bold text-primary">
                 <AnimatedCounter from={0} to={metric.value} />
