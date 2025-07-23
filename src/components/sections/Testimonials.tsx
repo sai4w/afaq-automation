@@ -54,11 +54,11 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="bg-secondary">
+    <section id="testimonials" className="bg-secondary/50">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-secondary-foreground">{t.testimonialsTitle}</h2>
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground">{t.testimonialsTitle}</h2>
           </div>
         </div>
         <Carousel setApi={setApi} className="w-full max-w-4xl mx-auto" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -66,9 +66,9 @@ export function Testimonials() {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card className="shadow-lg bg-background">
+                  <Card className="shadow-lg bg-card/10 backdrop-blur-sm">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center space-y-4">
-                      <div className="flex gap-1 text-yellow-400">
+                      <div className="flex gap-1" style={{ color: 'hsl(var(--logo-red))' }}>
                         <Star className="w-5 h-5 fill-current" />
                         <Star className="w-5 h-5 fill-current" />
                         <Star className="w-5 h-5 fill-current" />

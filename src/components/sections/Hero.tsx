@@ -17,14 +17,14 @@ export function Hero() {
   const isVisible = useOnScreen(ref);
 
   return (
-    <section id="home" ref={ref} className="w-full h-screen flex items-center justify-center bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10"></div>
+    <section id="home" ref={ref} className="w-full h-[calc(100vh-80px)] flex items-center justify-center bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
         <Image 
             src="https://placehold.co/1920x1080.png"
             alt="Hero Background"
             data-ai-hint="futuristic technology abstract"
             fill
-            className="object-cover"
+            className="object-cover opacity-30"
             priority
         />
         <div className="container px-4 md:px-6 z-20">
@@ -36,7 +36,7 @@ export function Hero() {
                 <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none text-foreground">
                     {t.heroTitle}
                 </h1>
-                <p className="max-w-[700px] text-lg md:text-xl text-muted-foreground">
+                <p className="max-w-[700px] text-lg md:text-xl text-foreground/80">
                     {t.heroSubtitle}
                 </p>
                 <div className="flex flex-col gap-4 min-[400px]:flex-row justify-center">
@@ -46,7 +46,7 @@ export function Hero() {
                             <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
                         </Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline">
+                    <Button asChild size="lg" variant="outline" className="bg-transparent text-foreground border-foreground/30 hover:bg-foreground/5">
                         <Link href="#">
                             <PlayCircle className="me-2 h-5 w-5" />
                             Watch Demo

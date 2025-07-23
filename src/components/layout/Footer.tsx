@@ -13,18 +13,18 @@ export function Footer() {
       <div className="container py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
            <div className="flex items-center gap-2 font-bold text-lg text-foreground">
-             <BotMessageSquare className="h-7 w-7 text-primary" />
+             <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
              <span className="font-headline">آفاق للأتمتة</span>
            </div>
            <div className="flex gap-4">
               <Link href="#" aria-label="Twitter">
-                <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+                <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary-foreground/80 transition-colors" />
               </Link>
               <Link href="#" aria-label="LinkedIn">
-                <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+                <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary-foreground/80 transition-colors" />
               </Link>
               <Link href="#" aria-label="Instagram">
-                <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+                <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary-foreground/80 transition-colors" />
               </Link>
            </div>
         </div>

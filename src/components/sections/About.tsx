@@ -15,14 +15,14 @@ export function About() {
   return (
     <section id="about" ref={ref} className="bg-background">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
           <div className={cn(
               "space-y-6 transition-all duration-700 ease-out",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
               )}
           >
              <div className="space-y-3">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl text-primary">{t.aboutTitle}</h2>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl text-foreground">{t.aboutTitle}</h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     {t.aboutSubtitle}
                 </p>

@@ -16,22 +16,22 @@ export function Services() {
 
   const services = [
     {
-      icon: <Cog className="w-12 h-12 text-primary" />,
+      icon: <Cog className="w-12 h-12 text-primary-foreground" />,
       title: t.service1Title,
       description: t.service1Desc,
     },
     {
-      icon: <BrainCircuit className="w-12 h-12 text-primary" />,
+      icon: <BrainCircuit className="w-12 h-12 text-primary-foreground" />,
       title: t.service2Title,
       description: t.service2Desc,
     },
     {
-      icon: <BarChart3 className="w-12 h-12 text-primary" />,
+      icon: <BarChart3 className="w-12 h-12 text-primary-foreground" />,
       title: t.service3Title,
       description: t.service3Desc,
     },
     {
-      icon: <DatabaseZap className="w-12 h-12 text-primary" />,
+      icon: <DatabaseZap className="w-12 h-12 text-primary-foreground" />,
       title: t.service4Title,
       description: t.service4Desc,
     },
@@ -46,7 +46,7 @@ export function Services() {
             )}
         >
           <div className="space-y-3">
-            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground font-medium">{t.navServices}</div>
+            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">{t.navServices}</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground">{t.servicesTitle}</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               {t.servicesSubtitle}
@@ -63,7 +63,7 @@ export function Services() {
               )}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card">
+              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card/10 backdrop-blur-sm">
                 <CardHeader className="p-0 mb-4">
                   {service.icon}
                 </CardHeader>

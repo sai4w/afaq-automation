@@ -33,26 +33,39 @@ export function Header() {
   return (
     <header className="w-full p-4">
       <div 
-        className="container flex h-16 items-center justify-between rounded-full border border-border/20 bg-muted/30 backdrop-blur-md supports-[backdrop-filter]:bg-muted/30 shadow-lg px-8 max-w-6xl mx-auto"
+        className="container flex h-16 items-center justify-between rounded-full border border-border/20 bg-black/5 backdrop-blur-md supports-[backdrop-filter]:bg-black/5 shadow-lg px-8 max-w-7xl mx-auto"
       >
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
-          <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
-          <span className="font-headline">آفاق</span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
+        <div className="hidden md:flex items-center gap-6 w-1/3">
+          {navLinks.slice(0, 3).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
             >
               {link.label}
             </Link>
           ))}
-        </nav>
-        <div className="flex items-center gap-2">
+        </div>
+
+        <Link href="#home" className="flex items-center gap-2 font-bold text-lg justify-center w-1/3">
+          <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
+          <span className="font-headline text-foreground">آفاق</span>
+        </Link>
+        
+        <div className="flex items-center gap-2 justify-end w-1/3">
+           <div className="hidden md:flex items-center gap-6">
+            {navLinks.slice(3, 6).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle Language">
-            <Languages className="h-5 w-5" />
+            <Languages className="h-5 w-5 text-foreground" />
           </Button>
           <Button asChild className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
             <Link href="#contact">{t.navBookCall}</Link>
@@ -64,9 +77,9 @@ export function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side={language === 'ar' ? 'right' : 'left'}>
+              <SheetContent side={language === 'ar' ? 'right' : 'left'} className="bg-background">
                 <div className="flex flex-col gap-6 p-6">
-                  <Link href="#home" onClick={closeSheet} className="flex items-center gap-2 font-bold text-lg">
+                  <Link href="#home" onClick={closeSheet} className="flex items-center gap-2 font-bold text-lg text-foreground">
                     <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
                     <span className="font-headline">آفاق</span>
                   </Link>
@@ -75,7 +88,7 @@ export function Header() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary-foreground/80"
                         onClick={closeSheet}
                       >
                         {link.label}
