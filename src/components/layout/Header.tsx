@@ -8,7 +8,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Languages, BotMessageSquare } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
-import { cn } from '@/lib/utils';
 
 export function Header() {
   const { language, setLanguage } = useLanguage();
@@ -34,7 +33,7 @@ export function Header() {
   return (
     <header className="w-full p-4">
       <div 
-        className="container flex h-16 items-center justify-between rounded-full border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg"
+        className="container flex h-16 items-center justify-between rounded-full border border-border/20 bg-muted/30 backdrop-blur-md supports-[backdrop-filter]:bg-muted/30 shadow-lg px-8 max-w-6xl mx-auto"
       >
         <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
           <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
