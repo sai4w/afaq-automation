@@ -17,14 +17,14 @@ export function Hero() {
   const isVisible = useOnScreen(ref);
 
   return (
-    <section id="home" ref={ref} className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center bg-background relative overflow-hidden">
+    <section id="home" ref={ref} className="w-full min-h-[calc(100vh-112px)] flex items-center justify-center bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/50 to-background z-10"></div>
         <Image 
             src="https://placehold.co/1920x1080.png"
             alt="Hero Background"
             data-ai-hint="futuristic technology abstract"
             fill
-            className="object-cover opacity-5"
+            className="object-cover opacity-20"
             priority
         />
         <div className="container px-4 md:px-6 z-20">
@@ -36,17 +36,17 @@ export function Hero() {
                 <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground">
                     {t.heroTitle}
                 </h1>
-                <p className="max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed">
+                <p className="max-w-3xl text-lg md:text-xl text-foreground/80 leading-relaxed">
                     {t.heroSubtitle}
                 </p>
                 <div className="flex flex-col gap-4 min-[400px]:flex-row justify-center">
-                    <Button asChild size="lg" className="rounded-full px-8">
+                    <Button asChild size="lg" className="rounded-full px-8 text-lg">
                         <Link href="#services">
                             {t.heroCta}
                             <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
                         </Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-foreground/20 hover:bg-foreground/5">
+                    <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-foreground/20 hover:bg-foreground/5 text-lg">
                         <Link href="#">
                             <PlayCircle className="me-2 h-5 w-5" />
                             Watch Demo

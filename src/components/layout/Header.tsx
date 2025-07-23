@@ -1,5 +1,4 @@
 'use client';
-
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -14,16 +13,6 @@ export function Header() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
 
   const navLinks = [
     { href: '#home', label: t.navHome },
@@ -42,40 +31,48 @@ export function Header() {
   const closeSheet = () => setIsSheetOpen(false);
 
   return (
-    <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
-      isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
-    )}>
-      <div className="container flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
-          <BotMessageSquare className="h-8 w-8" style={{ color: 'hsl(var(--logo-red))' }} />
-          <span className="font-headline text-foreground text-xl">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
-        </Link>
-        
+    <header className="container my-4">
+      <div className={cn(
+        "flex h-20 items-center justify-between px-6 rounded-full bg-white/50 backdrop-blur-lg shadow-lg",
+      )}>
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {navLinks.slice(0, 4).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle Language">
+        <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
+          <BotMessageSquare className="h-8 w-8" style={{ color: 'hsl(var(--logo-red))' }} />
+          <span className="font-headline text-foreground text-xl">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
+        </Link>
+        
+        <div className="hidden md:flex items-center gap-6">
+           {navLinks.slice(4).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
+            >
+              {link.label}
+            </Link>
+          ))}
+           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle Language">
             <Languages className="h-5 w-5 text-muted-foreground" />
           </Button>
-          <Button asChild className="hidden md:inline-flex rounded-full">
-            <Link href="#contact">{t.navBookCall}</Link>
-          </Button>
-          <div className="md:hidden">
+        </div>
+
+
+        <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6 text-muted-foreground" />
+                  <Menu className="h-6 w-6 text-foreground" />
                 </Button>
               </SheetTrigger>
               <SheetContent side={language === 'ar' ? 'right' : 'left'} className="bg-background">
@@ -89,21 +86,21 @@ export function Header() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary-foreground"
                         onClick={closeSheet}
                       >
                         {link.label}
                       </Link>
                     ))}
                   </nav>
-                  <Button asChild size="lg" className="rounded-full" onClick={closeSheet}>
-                     <Link href="#contact">{t.navBookCall}</Link>
-                  </Button>
+                   <Button variant="ghost" size="lg" onClick={() => { toggleLanguage(); closeSheet(); }}>
+                     {language === 'en' ? 'العربية' : 'English'}
+                   </Button>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
-        </div>
+
       </div>
     </header>
   );

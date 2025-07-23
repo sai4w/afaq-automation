@@ -13,7 +13,7 @@ export function About() {
   const isVisible = useOnScreen(ref, '-100px');
 
   return (
-    <section id="about" ref={ref} className="bg-secondary/30">
+    <section id="about" ref={ref} className="bg-background">
       <div className="container px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
           <div className={cn(

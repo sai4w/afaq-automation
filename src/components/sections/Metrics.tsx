@@ -15,14 +15,14 @@ export function Metrics() {
 
 
   const metrics = [
-    { icon: <Smile className="w-10 h-10 text-primary" />, value: 95, label: t.metric1Label, suffix: '%' },
-    { icon: <BarChart className="w-10 h-10 text-primary" />, value: 150, label: t.metric2Label, suffix: '+' },
-    { icon: <Users className="w-10 h-10 text-primary" />, value: 40, label: t.metric3Label, suffix: '%' },
-    { icon: <Clock className="w-10 h-10 text-primary" />, value: 24, label: t.metric4Label, suffix: '/7' },
+    { icon: <Smile className="w-10 h-10 text-primary-foreground" />, value: 95, label: t.metric1Label, suffix: '%' },
+    { icon: <BarChart className="w-10 h-10 text-primary-foreground" />, value: 150, label: t.metric2Label, suffix: '+' },
+    { icon: <Users className="w-10 h-10 text-primary-foreground" />, value: 40, label: t.metric3Label, suffix: '%' },
+    { icon: <Clock className="w-10 h-10 text-primary-foreground" />, value: 24, label: t.metric4Label, suffix: '/7' },
   ];
 
   return (
-    <section id="metrics" ref={ref} className="bg-background">
+    <section id="metrics" ref={ref} className="bg-secondary/30">
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           {metrics.map((metric, index) => (

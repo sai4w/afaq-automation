@@ -16,29 +16,29 @@ export function Services() {
 
   const services = [
     {
-      icon: <Cog className="w-10 h-10 text-primary" />,
+      icon: <Cog className="w-10 h-10 text-primary-foreground" />,
       title: t.service1Title,
       description: t.service1Desc,
     },
     {
-      icon: <BrainCircuit className="w-10 h-10 text-primary" />,
+      icon: <BrainCircuit className="w-10 h-10 text-primary-foreground" />,
       title: t.service2Title,
       description: t.service2Desc,
     },
     {
-      icon: <BarChart3 className="w-10 h-10 text-primary" />,
+      icon: <BarChart3 className="w-10 h-10 text-primary-foreground" />,
       title: t.service3Title,
       description: t.service3Desc,
     },
     {
-      icon: <DatabaseZap className="w-10 h-10 text-primary" />,
+      icon: <DatabaseZap className="w-10 h-10 text-primary-foreground" />,
       title: t.service4Title,
       description: t.service4Desc,
     },
   ];
 
   return (
-    <section id="services" ref={ref} className="bg-secondary/30">
+    <section id="services" ref={ref} className="bg-background">
       <div className="container px-4 md:px-6">
         <div className={cn(
             "flex flex-col items-center justify-center space-y-4 text-center transition-all duration-700 ease-out",
@@ -46,7 +46,7 @@ export function Services() {
             )}
         >
           <div className="space-y-3">
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">{t.navServices}</div>
+            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary-foreground">{t.navServices}</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">{t.servicesTitle}</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
               {t.servicesSubtitle}
