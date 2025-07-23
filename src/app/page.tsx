@@ -6,7 +6,6 @@ import { About } from '@/components/sections/About';
 import { Metrics } from '@/components/sections/Metrics';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
-import { HeadlineOptimizer } from '@/components/sections/HeadlineOptimizer';
 import { OurWork } from '@/components/sections/OurWork';
 import { Blog } from '@/components/sections/Blog';
 import { Pricing } from '@/components/sections/Pricing';
@@ -24,7 +23,6 @@ export default function Home() {
         <Testimonials />
         <Blog />
         <Pricing />
-        <HeadlineOptimizer />
         <Contact />
       </main>
       <Footer />

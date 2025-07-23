@@ -4,49 +4,47 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowRight, PlayCircle } from 'lucide-react';
+import Image from 'next/image';
 
 export function Hero() {
-  const { language, direction } = useLanguage();
+  const { language } = useLanguage();
   const t = translations[language];
 
   return (
-    <section id="home" className="bg-secondary">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-          <div className="flex flex-col justify-center space-y-4">
-            <div className="space-y-4">
-              <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-primary">
-                {t.heroTitle}
-              </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                {t.heroSubtitle}
-              </p>
+    <section id="home" className="w-full h-[90vh] lg:h-screen flex items-center justify-center bg-secondary relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        <Image 
+            src="https://placehold.co/1920x1080.png"
+            alt="Hero Background"
+            data-ai-hint="futuristic technology abstract"
+            fill
+            className="object-cover"
+        />
+        <div className="container px-4 md:px-6 z-20">
+            <div className="flex flex-col items-center text-center space-y-6 text-white">
+                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">
+                    {t.heroTitle}
+                </h1>
+                <p className="max-w-[700px] text-lg md:text-xl text-gray-200">
+                    {t.heroSubtitle}
+                </p>
+                <div className="flex flex-col gap-4 min-[400px]:flex-row justify-center">
+                    <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
+                        <Link href="#services">
+                            {t.heroCta}
+                            <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
+                        </Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                        <Link href="#">
+                            <PlayCircle className="me-2 h-5 w-5" />
+                            Watch Demo
+                        </Link>
+                    </Button>
+                </div>
             </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="#services">
-                  {t.heroCta}
-                  <ArrowLeft className="ms-2 h-5 w-5 rtl:rotate-180" />
-                </Link>
-              </Button>
-               <Button asChild size="lg" variant="outline" className="text-primary border-primary hover:bg-primary/5 hover:text-primary">
-                <Link href="#contact">
-                  {t.navBookCall}
-                </Link>
-              </Button>
-            </div>
-          </div>
-          <img
-            src="https://placehold.co/600x400.png"
-            data-ai-hint="business automation technology"
-            alt="Hero"
-            width="600"
-            height="400"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-          />
         </div>
-      </div>
     </section>
   );
 }

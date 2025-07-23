@@ -8,24 +8,28 @@ export function About() {
   const t = translations[language];
 
   return (
-    <section id="about" className="bg-secondary">
+    <section id="about" className="bg-background">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-          <div className="space-y-4">
-             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary">{t.aboutTitle}</h2>
-            <h3 className="text-xl font-semibold">{t.aboutSubtitle}</h3>
-            <p className="text-muted-foreground">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="space-y-6">
+             <div className="space-y-3">
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl text-primary">{t.aboutTitle}</h2>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    {t.aboutSubtitle}
+                </p>
+             </div>
+            <p className="text-muted-foreground leading-relaxed">
               {t.aboutText}
             </p>
           </div>
            <div className="flex justify-center items-center">
              <Image
-              src="https://placehold.co/550x310.png"
+              src="https://placehold.co/550x550.png"
               data-ai-hint="team collaboration"
               width={550}
-              height={310}
+              height={550}
               alt="About Us"
-              className="rounded-xl object-cover"
+              className="rounded-xl object-cover aspect-square"
              />
            </div>
         </div>

@@ -10,32 +10,24 @@ export function Metrics() {
   const t = translations[language];
 
   const metrics = [
-    { icon: <Smile className="w-8 h-8 text-accent" />, value: 95, label: t.metric1Label, suffix: '%' },
-    { icon: <BarChart className="w-8 h-8 text-accent" />, value: 150, label: t.metric2Label, suffix: '+' },
-    { icon: <Users className="w-8 h-8 text-accent" />, value: 40, label: t.metric3Label, suffix: '%' },
-    { icon: <Clock className="w-8 h-8 text-accent" />, value: 24, label: t.metric4Label, suffix: '/7' },
+    { icon: <Smile className="w-10 h-10 text-primary" />, value: 95, label: t.metric1Label, suffix: '%' },
+    { icon: <BarChart className="w-10 h-10 text-primary" />, value: 150, label: t.metric2Label, suffix: '+' },
+    { icon: <Users className="w-10 h-10 text-primary" />, value: 40, label: t.metric3Label, suffix: '%' },
+    { icon: <Clock className="w-10 h-10 text-primary" />, value: 24, label: t.metric4Label, suffix: '/7' },
   ];
 
   return (
-    <section id="metrics" className="bg-primary text-primary-foreground">
+    <section id="metrics" className="bg-secondary">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">{t.metricsTitle}</h2>
-            <p className="max-w-[900px] text-primary-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              {t.metricsSubtitle}
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 py-12 sm:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           {metrics.map((metric, index) => (
-            <div key={index} className="flex flex-col items-center justify-center space-y-2">
+            <div key={index} className="flex flex-col items-center justify-center text-center space-y-3 p-6 bg-background rounded-lg shadow-md transition-transform hover:scale-105">
               {metric.icon}
-              <div className="text-5xl font-bold">
+              <div className="text-5xl font-bold text-primary">
                 <AnimatedCounter from={0} to={metric.value} />
-                {metric.suffix}
+                <span className="text-4xl">{metric.suffix}</span>
               </div>
-              <p className="text-sm font-medium text-primary-foreground/80">{metric.label}</p>
+              <p className="text-lg font-medium text-muted-foreground">{metric.label}</p>
             </div>
           ))}
         </div>
