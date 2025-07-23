@@ -1,18 +1,29 @@
 'use client';
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Languages, BotMessageSquare } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { cn } from '@/lib/utils';
 
 export function Header() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   const navLinks = [
     { href: '#home', label: t.navHome },
@@ -31,71 +42,61 @@ export function Header() {
   const closeSheet = () => setIsSheetOpen(false);
 
   return (
-    <header className="w-full p-4">
-      <div 
-        className="container flex h-16 items-center justify-between rounded-full border border-border/20 bg-black/5 backdrop-blur-md supports-[backdrop-filter]:bg-black/5 shadow-lg px-8 max-w-7xl mx-auto"
-      >
-        <div className="hidden md:flex items-center gap-6 w-1/3">
-          {navLinks.slice(0, 3).map((link) => (
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300",
+      isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+    )}>
+      <div className="container flex h-20 items-center justify-between px-4 md:px-6">
+        <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
+          <BotMessageSquare className="h-8 w-8" style={{ color: 'hsl(var(--logo-red))' }} />
+          <span className="font-headline text-foreground text-xl">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
+        </Link>
+        
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {link.label}
             </Link>
           ))}
-        </div>
+        </nav>
 
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg justify-center w-1/3">
-          <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
-          <span className="font-headline text-foreground">آفاق</span>
-        </Link>
-        
-        <div className="flex items-center gap-2 justify-end w-1/3">
-           <div className="hidden md:flex items-center gap-6">
-            {navLinks.slice(3, 6).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground transition-colors hover:text-primary-foreground/80"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle Language">
-            <Languages className="h-5 w-5 text-foreground" />
+            <Languages className="h-5 w-5 text-muted-foreground" />
           </Button>
-          <Button asChild className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
+          <Button asChild className="hidden md:inline-flex rounded-full">
             <Link href="#contact">{t.navBookCall}</Link>
           </Button>
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6 text-muted-foreground" />
                 </Button>
               </SheetTrigger>
               <SheetContent side={language === 'ar' ? 'right' : 'left'} className="bg-background">
                 <div className="flex flex-col gap-6 p-6">
                   <Link href="#home" onClick={closeSheet} className="flex items-center gap-2 font-bold text-lg text-foreground">
                     <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
-                    <span className="font-headline">آفاق</span>
+                    <span className="font-headline">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
                   </Link>
                   <nav className="flex flex-col gap-4">
                     {navLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-lg font-medium text-foreground transition-colors hover:text-primary-foreground/80"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
                         onClick={closeSheet}
                       >
                         {link.label}
                       </Link>
                     ))}
                   </nav>
-                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={closeSheet}>
+                  <Button asChild size="lg" className="rounded-full" onClick={closeSheet}>
                      <Link href="#contact">{t.navBookCall}</Link>
                   </Button>
                 </div>

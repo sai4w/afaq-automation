@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Cog, BrainCircuit, BarChart3, DatabaseZap } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -16,39 +16,39 @@ export function Services() {
 
   const services = [
     {
-      icon: <Cog className="w-12 h-12 text-primary-foreground" />,
+      icon: <Cog className="w-10 h-10 text-primary" />,
       title: t.service1Title,
       description: t.service1Desc,
     },
     {
-      icon: <BrainCircuit className="w-12 h-12 text-primary-foreground" />,
+      icon: <BrainCircuit className="w-10 h-10 text-primary" />,
       title: t.service2Title,
       description: t.service2Desc,
     },
     {
-      icon: <BarChart3 className="w-12 h-12 text-primary-foreground" />,
+      icon: <BarChart3 className="w-10 h-10 text-primary" />,
       title: t.service3Title,
       description: t.service3Desc,
     },
     {
-      icon: <DatabaseZap className="w-12 h-12 text-primary-foreground" />,
+      icon: <DatabaseZap className="w-10 h-10 text-primary" />,
       title: t.service4Title,
       description: t.service4Desc,
     },
   ];
 
   return (
-    <section id="services" ref={ref} className="bg-background">
+    <section id="services" ref={ref} className="bg-secondary/30">
       <div className="container px-4 md:px-6">
         <div className={cn(
             "flex flex-col items-center justify-center space-y-4 text-center transition-all duration-700 ease-out",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
         >
           <div className="space-y-3">
-            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">{t.navServices}</div>
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground">{t.servicesTitle}</h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">{t.navServices}</div>
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">{t.servicesTitle}</h2>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
               {t.servicesSubtitle}
             </p>
           </div>
@@ -58,18 +58,18 @@ export function Services() {
             <div
               key={index}
               className={cn(
-                "transition-all duration-700 ease-out",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                "transition-all duration-300 ease-out",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card/10 backdrop-blur-sm">
+              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-sm hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card border">
                 <CardHeader className="p-0 mb-4">
                   {service.icon}
                 </CardHeader>
-                <CardContent className="p-0 flex flex-col">
+                <CardContent className="p-0 flex flex-col flex-grow">
                   <CardTitle className="mb-2 text-xl font-semibold text-card-foreground">{service.title}</CardTitle>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                  <CardDescription className="text-sm leading-relaxed flex-grow">{service.description}</CardDescription>
                 </CardContent>
               </Card>
             </div>

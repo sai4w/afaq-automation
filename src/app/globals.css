@@ -8,50 +8,50 @@ body {
 
 @layer base {
   :root {
-    --background: 195 13% 84%; /* #d0d8da */
-    --foreground: 0 0% 6%; /* #0f0f0f */
+    --background: 210 20% 98%; /* #f9fafb - Light Gray */
+    --foreground: 224 71% 4%; /* #030712 - Nearly Black */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
+    --card-foreground: 224 71% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
-    --primary: 0 0% 99%; /* #fcfcfc */
-    --primary-foreground: 0 0% 6%; /* #0f0f0f */
+    --popover-foreground: 224 71% 4%;
+    --primary: 158 79% 41%; /* #10B981 - Emerald Green */
+    --primary-foreground: 0 0% 98%; /* #fafafa */
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 0 0% 6%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96.1%;
-    --accent-foreground: 0 0% 6%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 0 0% 6%;
-    --radius: 0.8rem;
+    --ring: 158 79% 41%;
+    --radius: 0.5rem;
     --logo-red: 358 76% 58%; /* #e34348 */
   }
 
   .dark {
-    --background: 0 0% 6%;
-    --foreground: 195 13% 84%;
-    --card: 0 0% 6%;
-    --card-foreground: 195 13% 84%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 195 13% 84%;
-    --primary: 0 0% 99%;
-    --primary-foreground: 0 0% 6%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 158 69% 51%;
+    --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 195 13% 84%;
+    --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 195 13% 84%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 195 13% 84%;
-    --radius: 0.8rem;
+    --ring: 158 69% 51%;
+    --radius: 0.5rem;
     --logo-red: 358 76% 58%;
   }
 }
@@ -64,6 +64,15 @@ body {
     @apply bg-background text-foreground;
   }
   section {
-    @apply w-full py-12 md:py-20 lg:py-24;
+    @apply w-full py-16 md:py-24 lg:py-28;
+  }
+  h1 {
+    @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl font-bold tracking-tight sm:text-4xl;
+  }
+  p {
+    @apply leading-7;
   }
 }

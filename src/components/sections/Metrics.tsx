@@ -15,24 +15,24 @@ export function Metrics() {
 
 
   const metrics = [
-    { icon: <Smile className="w-10 h-10 text-primary-foreground" />, value: 95, label: t.metric1Label, suffix: '%' },
-    { icon: <BarChart className="w-10 h-10 text-primary-foreground" />, value: 150, label: t.metric2Label, suffix: '+' },
-    { icon: <Users className="w-10 h-10 text-primary-foreground" />, value: 40, label: t.metric3Label, suffix: '%' },
-    { icon: <Clock className="w-10 h-10 text-primary-foreground" />, value: 24, label: t.metric4Label, suffix: '/7' },
+    { icon: <Smile className="w-10 h-10 text-primary" />, value: 95, label: t.metric1Label, suffix: '%' },
+    { icon: <BarChart className="w-10 h-10 text-primary" />, value: 150, label: t.metric2Label, suffix: '+' },
+    { icon: <Users className="w-10 h-10 text-primary" />, value: 40, label: t.metric3Label, suffix: '%' },
+    { icon: <Clock className="w-10 h-10 text-primary" />, value: 24, label: t.metric4Label, suffix: '/7' },
   ];
 
   return (
-    <section id="metrics" ref={ref} className="bg-secondary/50">
+    <section id="metrics" ref={ref} className="bg-background">
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           {metrics.map((metric, index) => (
             <div
               key={index}
               className={cn(
-                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-card/10 backdrop-blur-sm rounded-lg shadow-md transition-all duration-700 ease-out hover:scale-105",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-card rounded-lg shadow-sm border transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {metric.icon}
               <div className="text-5xl font-bold text-foreground">
