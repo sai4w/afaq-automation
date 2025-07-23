@@ -39,24 +39,24 @@ export function Contact() {
           </Card>
           <div className="flex flex-col justify-center space-y-6 pt-8 md:pt-0">
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <Phone className="w-8 h-8 text-primary" />
+              <Phone className="w-8 h-8 text-primary-foreground" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactPhone}</h3>
-                <a href="tel:+966123456789" className="text-muted-foreground hover:text-primary" dir="ltr">+966 12 345 6789</a>
+                <a href="tel:+966123456789" className="text-muted-foreground hover:text-primary-foreground" dir="ltr">+966 12 345 6789</a>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <Mail className="w-8 h-8 text-primary" />
+              <Mail className="w-8 h-8 text-primary-foreground" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactEmail}</h3>
-                <a href="mailto:info@afaq.sa" className="text-muted-foreground hover:text-primary">info@afaq.sa</a>
+                <a href="mailto:info@afaq.sa" className="text-muted-foreground hover:text-primary-foreground">info@afaq.sa</a>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-card transition-colors">
-              <MessageCircle className="w-8 h-8 text-primary" />
+              <MessageCircle className="w-8 h-8 text-primary-foreground" />
               <div>
                 <h3 className="font-semibold text-foreground">{t.contactWhatsApp}</h3>
-                <a href="https://wa.me/966123456789" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary" dir="ltr">+966 12 345 6789</a>
+                <a href="https://wa.me/966123456789" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary-foreground" dir="ltr">+966 12 345 6789</a>
               </div>
             </div>
              <Button asChild size="lg" className="rounded-full">

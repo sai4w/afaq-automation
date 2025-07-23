@@ -63,13 +63,13 @@ export function Services() {
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-sm hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-card border">
+              <Card className="flex flex-col text-left p-6 h-full transition-all duration-300 shadow-sm hover:shadow-xl hover:scale-105 hover:border-primary/50 bg-primary border">
                 <CardHeader className="p-0 mb-4">
                   {service.icon}
                 </CardHeader>
                 <CardContent className="p-0 flex flex-col flex-grow">
-                  <CardTitle className="mb-2 text-xl font-semibold text-card-foreground">{service.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed flex-grow">{service.description}</CardDescription>
+                  <CardTitle className="mb-2 text-xl font-semibold text-primary-foreground">{service.title}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed flex-grow text-primary-foreground/80">{service.description}</CardDescription>
                 </CardContent>
               </Card>
             </div>

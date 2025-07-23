@@ -29,13 +29,13 @@ export function Metrics() {
             <div
               key={index}
               className={cn(
-                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-card rounded-lg shadow-sm border transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg",
+                "flex flex-col items-center justify-center text-center space-y-3 p-6 bg-primary rounded-lg shadow-sm border transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg",
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {metric.icon}
-              <div className="text-5xl font-bold text-foreground">
+              <div className="text-5xl font-bold text-primary-foreground">
                 <AnimatedCounter from={0} to={metric.value} />
                 <span className="text-4xl">{metric.suffix}</span>
               </div>

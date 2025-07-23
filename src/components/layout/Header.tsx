@@ -33,7 +33,7 @@ export function Header() {
   return (
     <header className="container my-4">
       <div className={cn(
-        "flex h-20 items-center justify-between px-6 rounded-full bg-white/50 backdrop-blur-lg shadow-lg",
+        "relative flex h-20 items-center justify-between px-6 rounded-full bg-white/50 backdrop-blur-lg shadow-lg",
       )}>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.slice(0, 4).map((link) => (
@@ -47,10 +47,12 @@ export function Header() {
           ))}
         </nav>
 
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
-          <BotMessageSquare className="h-8 w-8" style={{ color: 'hsl(var(--logo-red))' }} />
-          <span className="font-headline text-foreground text-xl">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
-        </Link>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
+                <BotMessageSquare className="h-8 w-8" style={{ color: 'hsl(var(--logo-red))' }} />
+                <span className="font-headline text-foreground text-xl">{language === 'ar' ? 'آفاق' : 'Afaq'}</span>
+            </Link>
+        </div>
         
         <div className="hidden md:flex items-center gap-6">
            {navLinks.slice(4).map((link) => (
