@@ -14,15 +14,6 @@ export function Header() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { href: '#home', label: t.navHome },
@@ -41,17 +32,9 @@ export function Header() {
   const closeSheet = () => setIsSheetOpen(false);
 
   return (
-    <header 
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "top-4" : "top-0"
-      )}
-    >
+    <header className="w-full p-4">
       <div 
-        className={cn(
-          "container flex h-16 items-center justify-between transition-all duration-300",
-           scrolled ? "rounded-xl border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg" : "bg-transparent"
-        )}
+        className="container flex h-16 items-center justify-between rounded-full border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg"
       >
         <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
           <BotMessageSquare className="h-7 w-7" style={{ color: 'hsl(var(--logo-red))' }} />
@@ -72,7 +55,7 @@ export function Header() {
           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle Language">
             <Languages className="h-5 w-5" />
           </Button>
-          <Button asChild className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button asChild className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
             <Link href="#contact">{t.navBookCall}</Link>
           </Button>
           <div className="md:hidden">
